@@ -144,7 +144,7 @@ public class CSVUtil {
 					if (StringUtils.isNotBlank(line) && StringUtils.isNotBlank(line.replace(",", "")))
 						collectionSet.add(populateBean(line.split("\\,", -1), Employee.class));
 				} catch (Exception e1) {
-					System.out.println("failed to parse line " + line + " Exception: " + e1.getMessage()+"\n");
+					System.out.println("failed to parse line " + line + " Exception: " + e1.getMessage() + "\n");
 				}
 			});
 		}
@@ -306,13 +306,20 @@ public class CSVUtil {
 	 *             incase of Unparseable error.
 	 */
 	private Object converFieldValue(Field field, Object value) throws Exception {
+		// If value is blank then it return null value. Code should be removed incase if
+		// error should be thrown.
 		if (value == null || StringUtils.isBlank(value.toString()))
 			return null;
+
+		// Checking for string field.
 		if (field.getType() == String.class) {
 			return value;
+			// Checking for Date field.
 		} else if (field.getType() == Date.class) {
+			//Hardcode dateformat since it is poc.
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			return sdf.parse(value.toString());
+			// Checking for numeric field.
 		} else
 			return convertToNumber(field, value);
 	}
