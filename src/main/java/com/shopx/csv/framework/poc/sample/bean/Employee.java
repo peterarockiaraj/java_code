@@ -57,7 +57,8 @@ public class Employee implements Serializable {
 		result = prime * result + ((dob == null) ? 0 : dob.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + Float.floatToIntBits(percentage);
+		if(percentage!=null)
+			result = prime * result + Float.floatToIntBits(percentage);
 		return result;
 	}
 
