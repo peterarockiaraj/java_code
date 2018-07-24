@@ -6,6 +6,25 @@ Features
 4. CSVUtil will discard blank lines and empty records.
 5. Can read upto a 1.0GB file - Using java streams.
 
+Usage:
+------
+Created main method already in CSVUtil for testing.
+
+public static void main(String[] args) throws Exception {
+		// Creating new Instance for the CSVUtil
+		CSVUtil csvUtil = new CSVUtil();
+
+		// Calling csvToCollection method with args path of the csv file and class type.
+		Collection employeeSet = csvUtil.csvToCollection("/Users/peter_arputham/Desktop/employee.csv", Employee.class);
+
+		// Reading parsed csv collection values.
+		for (Object object : employeeSet) {
+			System.out.println(object);
+		}
+	}
+
+
+
 Notes:
 ------
 1. Java 1.8 version Required
@@ -17,6 +36,7 @@ Notes:
 7. Error records will be discarded and error show in console.
 8. Avoided MappedByteBuffer to do more engineering for POC code.
 9. For empty column values returning null(Added condition). If all the fields are required then condition should be removed from converFieldValue method.
+10. jUnit testcases needs to be added.
 
 Find the sample csv file below
 ------------------------------
