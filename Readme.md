@@ -1,14 +1,14 @@
-Features
+Features:
 ---------
-1. Column name can be there in any order
+1. The column name can be there in any order
 2. Parser converts and assigns values based on the type.
 3. Date format hardcoded with format 'dd/MM/yyyy' since it is POC. And not like to introduce configuration files for now.
 4. CSVUtil will discard blank lines and empty records.
-5. Can read upto a 1.0GB file - Using java streams.
+5. Can read up to a 1.0GB file - Using java streams.
 
 Usage:
 ------
-Created main method already in CSVUtil for testing.
+I have created the main method already in CSVUtil for testing.
 
 public static void main(String[] args) throws Exception {
 		// Creating new Instance for the CSVUtil
@@ -23,8 +23,6 @@ public static void main(String[] args) throws Exception {
 		}
 	}
 
-
-
 Notes:
 ------
 1. Java 1.8 version Required
@@ -32,11 +30,11 @@ Notes:
 3. Used java streams to process records faster (Ref: See "Section Reading a 1.0GB file" at https://www.java-success.com/processing-large-files-efficiently-java-part-1/)
 4. Not splited into small chunks since it is poc code.
 5. Header column is required(Made it mandatory )
-6. hashCode and equals should be overridden since using HashSet to return parsed csv file values as collection
-7. Error records will be discarded and error show in console.
+6. hashCode and equals should be overridden since using HashSet to return parsed CSV file values as a collection
+7. Error records will be discarded and error show in the console.
 8. Avoided MappedByteBuffer to do more engineering for POC code.
 9. For empty column values returning null(Added condition). If all the fields are required then condition should be removed from converFieldValue method.
-10. jUnit testcases needs to be added.
+10. jUnit test cases needs to be added.
 
 Find the sample csv file below
 ------------------------------
@@ -58,7 +56,8 @@ id,name,dob,percentage
 xxx,Arun,01/01/1982,77.5
 
 Find the sample output below.
------------------------------
+------------------------------
+
 failed to parse line 33,Sundarshan,asdf,66.5 Exception: Unparseable date: "asdf"
 
 failed to parse line xxx,Arun,01/01/1982,77.5 Exception: Unparseable number: "xxx"
